@@ -2,7 +2,7 @@
 
 [![](https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3718190/98ac8863e8362f32687934637fe7a776bff8b34b/library_header_japanese_2x.jpg)](https://store.steampowered.com/app/3718190/)
 
-This package supports one exact game (スーパーリアル麻雀 Venus Returns / Stripjong - Super Real Mahjong Venus Returns / 脱衣麻将 - 超真实麻将 Venus Returns) and loader combination:
+This patcher supports one exact game (スーパーリアル麻雀 Venus Returns / Stripjong - Super Real Mahjong Venus Returns / 脱衣麻将 - 超真实麻将 Venus Returns) and loader combination:
 
 - SRM-VR build shipped on 2026-08-31
 - Unity `2022.3.62f2`, Windows x64, IL2CPP
@@ -11,18 +11,25 @@ This package supports one exact game (スーパーリアル麻雀 Venus Returns 
 - `UnityPlayer.dll` SHA-256: `51DA2A05C3DC2BFFB4BEB43D6249C5C52DC702D250986DC5FB319120F1DFE938`
 - protected metadata SHA-256: `8A8C41F65145C50DC1796BB2BB6221FE4110FF8199A059DF6144558726E46506`
 
-The installer checks these hashes. If one does not match, it displays the
-actual and expected hashes and asks whether to continue.
-
 ## Install
 
 1. Download the official BepInEx nightly build from
    <https://builds.bepinex.dev/projects/bepinex_be> and select build 788,
    `BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.788+5b766a3.zip`.
 2. Extract BepInEx into the SRM-VR folder, beside `SRM-VR.exe`.
-3. Extract the compatibility-fix ZIP into that same folder. Allow it to create
+3. Extract the [release ZIP](https://github.com/arition/SRM-VR-BepInEx-Patcher/releases/latest) into that same folder. Allow it to create
    `BepInEx\tools`.
-4. From the game folder, run the self-contained patcher:
+4. Remove the Windows `Zone.Identifier` alternate data streams from the
+   extracted files. This step is required: BepInEx can fail to load its DLLs
+   while these downloaded-file markers remain. From PowerShell in the game
+   folder, run:
+
+   ```powershell
+   Get-ChildItem .\BepInEx, .\dotnet -Recurse -File | Unblock-File
+   Unblock-File .\winhttp.dll, .\doorstop_config.ini
+   ```
+
+5. Run the self-contained patcher:
 
    ```console
    .\BepInEx\tools\SrmrPatcher.exe install
@@ -33,7 +40,7 @@ actual and expected hashes and asks whether to continue.
    `--continue-on-hash-mismatch` accepts that risk without an interactive prompt;
    warnings are still displayed.
 
-5. Start the game from Steam. Confirm that `BepInEx\LogOutput.log` contains
+6. Start the game from Steam. Confirm that `BepInEx\LogOutput.log` contains
    `Chainloader startup complete`.
 
 The first launch can take longer while BepInEx downloads the matching Unity
