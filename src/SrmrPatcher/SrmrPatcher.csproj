@@ -17,11 +17,9 @@
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
-
   <ItemGroup>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\core\Mono.Cecil.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\..\SRMVR\BepInEx\core\Mono.Cecil.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

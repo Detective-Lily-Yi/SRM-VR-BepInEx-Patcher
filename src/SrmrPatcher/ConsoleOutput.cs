@@ -1,14 +1,15 @@
-namespace SrmrPatcher;
-
-internal static class ConsoleOutput
+namespace SrmrPatcher
 {
-    public static void PrintSummary(IEnumerable<KeyValuePair<string, object?>> values)
+    internal static class ConsoleOutput
     {
-        KeyValuePair<string, object?>[] entries = values.ToArray();
-        int width = entries.Max(entry => entry.Key.Length);
-        foreach ((string name, object? value) in entries)
+        public static void PrintSummary(IEnumerable<KeyValuePair<string, object?>> values)
         {
-            Console.WriteLine($"{name.PadRight(width)} : {value}");
+            KeyValuePair<string, object?>[] entries = values.ToArray();
+            int width = entries.Max(entry => entry.Key.Length);
+            foreach ((string name, object? value) in entries)
+            {
+                Console.WriteLine($"{name.PadRight(width)} : {value}");
+            }
         }
     }
 }

@@ -1,69 +1,60 @@
-namespace SrmrPatcher;
-
-internal static class SupportedBuild
+namespace SrmrPatcher
 {
-    public static readonly string[] GameAssemblyHashes =
-    [
-        "C721E373641239C9D75DBCD58E75BE89DBBF6D507D3A421ACE3754B4082272E3"
-    ];
+    internal static class SupportedBuild
+    {
+        public static readonly string[] GameAssemblyHashes =
+        [
+            "2BCE5EDCBFE768F40975D01386CC890C272DD1EC602844785DF407817E8182CC"
+        ];
 
-    public static readonly string[] UnityPlayerHashes =
-    [
-        "51DA2A05C3DC2BFFB4BEB43D6249C5C52DC702D250986DC5FB319120F1DFE938"
-    ];
+        public static readonly string[] UnityPlayerHashes =
+        [
+            "40333A26CCF452DB8301690334BE78F6A9CCC6B971903323556FED7310534B56"
+        ];
 
-    public static readonly string[] ProtectedMetadataHashes =
-    [
-        "8A8C41F65145C50DC1796BB2BB6221FE4110FF8199A059DF6144558726E46506"
-    ];
+        public static readonly string[] ProtectedMetadataHashes =
+        [
+            "630AED30E23CB875B33580E6BFD0A883A0BCA5CB02AD453EE3C5B80141BBECD0"
+        ];
 
-    public static readonly string[] ExportMapHashes =
-    [
-        "48FF8E564793BBD194BD1186955A796DACF0DCF8A8F1DC963D84D6E0D983F339"
-    ];
+        public static readonly string[] ExportMapHashes =
+        [
+            "3310AC4AE1548B6ACA54FAF633F70EF595569D81AF0EC7413FF8D4560A17367B"
+        ];
 
-    public static readonly string[] DoorstopInputHashes =
-    [
-        "8C6CDBC38836DEE87E3368F5DE1994D7C0CCEBF29E4CE7ABA3C0981F9375412C",
-        "2282E92640FB696E2C0FA1B08A12329DA57BAF7CDEE6A1FFAD24C0626E49A407",
-        "88527343FB10C69819BE9A8EB53CC8CFEA9730BE0759D402DCB9C3E3F35B99CA",
-        "61C9AEF4998CB74712E3758D2B85D5B217BC2D6F970E9C7FB7963D84D138A6DC"
-    ];
+        public static readonly string[] DoorstopInputHashes =
+        [
+            "8C6CDBC38836DEE87E3368F5DE1994D7C0CCEBF29E4CE7ABA3C0981F9375412C"
+        ];
 
-    public static readonly string[] DoorstopOutputHashes =
-    [
-        "2282E92640FB696E2C0FA1B08A12329DA57BAF7CDEE6A1FFAD24C0626E49A407",
-        "61C9AEF4998CB74712E3758D2B85D5B217BC2D6F970E9C7FB7963D84D138A6DC"
-    ];
+        public static readonly string[] DoorstopOutputHashes =
+        [
+            "F455814D1F2816E1E1905B985E85C7BAD9FA4DD9EAA0C7D5ABF773C0CA3978FC"
+        ];
 
-    public static readonly string[] RuntimeInputHashes =
-    [
-        "65AB051A681C2C1E52DF7596FF738BE401AAE72CFF882FF18241CF54A3EA38A4",
-        "851FE32BCDF55AF13A81042141F05F077168E7785E743CF5E539C640D38319C9",
-        "74B57F87FF60048D9337F1E4B2869A013DFDBBD836E8455E560DA21CFCCD2861"
-    ];
+        public static readonly string[] RuntimeInputHashes =
+        [
+            "65AB051A681C2C1E52DF7596FF738BE401AAE72CFF882FF18241CF54A3EA38A4"
+        ];
 
-    public static readonly string[] RuntimeOutputHashes =
-    [
-        "851FE32BCDF55AF13A81042141F05F077168E7785E743CF5E539C640D38319C9",
-        "74B57F87FF60048D9337F1E4B2869A013DFDBBD836E8455E560DA21CFCCD2861"
-    ];
+        public static readonly string[] RuntimeOutputHashes =
+        [
+            "008CD1DFD61AC08441A81F55AA6CFDDADD32C2060D674C5FD0ACF87774A9B18C"
+        ];
 
-    public static readonly string[] BepInExInputHashes =
-    [
-        "46CF1EF802BDF8CB6587FC1E4D98F7AF1073A60487B39A64E230E6F6E4C23AEC",
-        "A1A4D9770F84A0F16A706EC4A169080B0F3FFA909B216CDB9D8A8CD6B13A89B2",
-        "26540D72CB941691D905F16FEF7226EB55C1AE894E9137842C5074375C8EF816"
-    ];
+        public static readonly string[] BepInExInputHashes =
+        [
+            "46CF1EF802BDF8CB6587FC1E4D98F7AF1073A60487B39A64E230E6F6E4C23AEC"
+        ];
 
-    public static readonly string[] BepInExOutputHashes =
-    [
-        "A1A4D9770F84A0F16A706EC4A169080B0F3FFA909B216CDB9D8A8CD6B13A89B2",
-        "26540D72CB941691D905F16FEF7226EB55C1AE894E9137842C5074375C8EF816"
-    ];
+        public static readonly string[] BepInExOutputHashes =
+        [
+            "E7A30488B434DCC9F1E4E25F71D4013A92F5BAE721F2CABD4BE82EE6590B9DA0"
+        ];
 
-    public static readonly string[] RebuiltMetadataHashes =
-    [
-        "5188D940EDE489BE976887B849AC51A433150BDB79AB81756E248F2099D46C19"
-    ];
+        public static readonly string[] RebuiltMetadataHashes =
+        [
+            "369D326F501A4114AAB0BA1D97C614D5045B7C7938505741E78608899048C18B"
+        ];
+    }
 }

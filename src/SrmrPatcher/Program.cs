@@ -1,59 +1,60 @@
 using System.Text;
 
-namespace SrmrPatcher;
-
-internal static class Program
+namespace SrmrPatcher
 {
-    public static int Main(string[] args)
+    internal static class Program
     {
-        Console.OutputEncoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-
-        try
+        public static int Main(string[] args)
         {
-            if (args.Length == 0 || args[0] is "help" or "--help" or "-h")
+            Console.OutputEncoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+
+            try
             {
-                PrintHelp();
-                return 0;
+                if (args.Length == 0 || args[0] is "help" or "--help" or "-h")
+                {
+                    PrintHelp();
+                    return 0;
+                }
+
+                string command = args[0].ToLowerInvariant();
+                string[] commandArgs = args[1..];
+                return command switch
+                {
+                    "install" => Commands.Install(commandArgs),
+                    "patch-doorstop" => Commands.PatchDoorstop(commandArgs),
+                    "patch-interop" => Commands.PatchInterop(commandArgs),
+                    "rebuild-metadata" => Commands.RebuildMetadata(commandArgs),
+                    "build-info" => Commands.BuildInfo(commandArgs),
+                    "dump-metadata" => Commands.DumpMetadata(commandArgs),
+                    _ => throw new ArgumentException($"Unknown command: {args[0]}")
+                };
             }
-
-            string command = args[0].ToLowerInvariant();
-            string[] commandArgs = args[1..];
-            return command switch
+            catch (Exception exception)
             {
-                "install" => Commands.Install(commandArgs),
-                "patch-doorstop" => Commands.PatchDoorstop(commandArgs),
-                "patch-interop" => Commands.PatchInterop(commandArgs),
-                "rebuild-metadata" => Commands.RebuildMetadata(commandArgs),
-                "build-info" => Commands.BuildInfo(commandArgs),
-                "dump-metadata" => Commands.DumpMetadata(commandArgs),
-                _ => throw new ArgumentException($"Unknown command: {args[0]}")
-            };
+                Console.Error.WriteLine($"Error: {exception.Message}");
+                return 1;
+            }
         }
-        catch (Exception exception)
+
+        private static void PrintHelp()
         {
-            Console.Error.WriteLine($"Error: {exception.Message}");
-            return 1;
+            Console.WriteLine(
+                """
+                SRM-VR BepInEx compatibility patcher
+
+                Usage:
+                  SrmrPatcher.exe <command> [options]
+
+                Commands:
+                  install             Validate, stage, and install the complete fix
+                  patch-doorstop      Patch only the UnityDoorstop proxy
+                  patch-interop       Patch only the managed BepInEx assemblies
+                  rebuild-metadata    Reconstruct canonical IL2CPP metadata
+                  build-info          Print installed build information as JSON
+                  dump-metadata       Dump metadata from a running process
+
+                Run a command with --help to see its options.
+                """);
         }
-    }
-
-    private static void PrintHelp()
-    {
-        Console.WriteLine(
-            """
-            SRM-VR BepInEx compatibility patcher
-
-            Usage:
-              SrmrPatcher.exe <command> [options]
-
-            Commands:
-              install             Validate, stage, and install the complete fix
-              patch-doorstop      Patch only the UnityDoorstop proxy
-              patch-interop       Patch only the managed BepInEx assemblies
-              rebuild-metadata    Reconstruct canonical IL2CPP metadata
-              build-info          Print installed build information as JSON
-              dump-metadata       Dump metadata from a running process
-
-            Run a command with --help to see its options.
-            """);
     }
 }
